@@ -1,0 +1,63 @@
+name: AntiAddict
+author: Staartvin
+coder: Staartvin
+main: me.staartvin.antiaddict.AntiAddict
+version: 2.0
+website: http://dev.bukkit.org/server-mods/antiaddict/
+description: Prevents addicts from playing too much.
+database: true
+softdepend: [Vault]
+permissions:
+    antiaddict.*:
+        description: Gives the player total control.
+        default: op
+        children:
+            antiaddict.admin: true
+            antiaddict.ignorelimits: true
+            antiaddict.lefttime: true
+            antiaddict.addicts: true
+            antiaddict.addicts.add: true
+            antiaddict.addicts.remove: true
+            antiaddict.versionnotice: true
+            antiaddict.infoplayer: true
+            antiaddict.language: true
+            antiaddict.language.set: true
+            antiaddict.language.setother: true
+    antiaddict.admin:
+        description: Gives a player total control over the plugin.
+        default: op
+    antiaddict.ignorelimits:
+        description: Gives a player the ability to ignore the timelimits for addicts if LimitAll is set to true in the config.
+        default: op
+    antiaddict.lefttime:
+        description: Gives the player the ability to check how much time he/she has left before getting kicked.
+        default: true
+    antiaddict.addicts:
+        description: Gives the player the ability to see the list of addicts.
+        default: op
+    antiaddict.addicts.add:
+        description: Gives the player the ability to add players to the list of addicts.
+        default: op
+    antiaddict.addicts.remove:
+        description: Gives the player the ability to remove players to the list of addicts.
+        default: op
+    antiaddict.versionnotice:
+        description: Gives the player the ability to get noticed when a new version is out.
+        default: op
+    antiaddict.infoplayer:
+        description: Gives the player the ability to get info about another player.
+        default: true
+    antiaddict.language:
+        description: Gives the player the ability to access some language commands.
+        default: true
+    antiaddict.language.set:
+        description: Gives the player the ability to set a language.
+        default: true
+    antiaddict.language.setother:
+        description: Gives the player the ability to set the language of another player.
+        default: op
+commands:
+      antiaddict:
+        description: Controls AntiAddict.
+        usage: /<command>
+        aliases: [aa, antia, aaddict]
