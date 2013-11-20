@@ -12,7 +12,8 @@ import me.staartvin.antiaddict.database.DatabaseConnector;
 import me.staartvin.antiaddict.database.SqLiteDatabase;
 import me.staartvin.antiaddict.listeners.Listeners;
 import me.staartvin.antiaddict.vault.VaultHandler;
-import me.staartvin.antiaddict.version.VersionUpdate;
+import me.staartvin.antiaddict.version.Updater;
+import me.staartvin.antiaddict.version.UpdateHandler;
 
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -167,7 +168,7 @@ public class AntiAddict extends JavaPlugin {
 		setupDatabase();
 
 		// Register Events
-		getServer().getPluginManager().registerEvents(new VersionUpdate(this),
+		getServer().getPluginManager().registerEvents(new UpdateHandler(this),
 				this);
 		getServer().getPluginManager()
 				.registerEvents(new Listeners(this), this);
@@ -256,5 +257,9 @@ public class AntiAddict extends JavaPlugin {
 
 	public void setUseMultiWorldSetup(final boolean useMultiWorldSetup) {
 		UseMultiWorldSetup = useMultiWorldSetup;
+	}
+	
+	public Updater getLatestUpdater() {
+		return new Updater(this, 33844, this.getFile(), Updater.UpdateType.NO_DOWNLOAD, false);
 	}
 }
