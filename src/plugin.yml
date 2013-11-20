@@ -2,7 +2,7 @@ name: AntiAddict
 author: Staartvin
 coder: Staartvin
 main: me.staartvin.antiaddict.AntiAddict
-version: 2.0
+version: 2.1
 website: http://dev.bukkit.org/server-mods/antiaddict/
 description: Prevents addicts from playing too much.
 database: true
