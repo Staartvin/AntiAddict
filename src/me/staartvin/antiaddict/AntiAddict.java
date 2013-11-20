@@ -11,7 +11,6 @@ import me.staartvin.antiaddict.config.LoadConfiguration;
 import me.staartvin.antiaddict.database.DatabaseConnector;
 import me.staartvin.antiaddict.database.SqLiteDatabase;
 import me.staartvin.antiaddict.listeners.Listeners;
-import me.staartvin.antiaddict.vault.VaultHandler;
 import me.staartvin.antiaddict.version.Updater;
 import me.staartvin.antiaddict.version.UpdateHandler;
 
@@ -34,7 +33,7 @@ public class AntiAddict extends JavaPlugin {
 	private final Config mainConfig = new Config(this, "", "config.yml");
 	private final Config groupConfig = new Config(this, "", "groups.yml");
 
-	private VaultHandler vaultHandler;
+	//private VaultHandler vaultHandler;
 
 	private LoadConfiguration loadConfiguration = new LoadConfiguration(this);
 	private Methods methods = new Methods(this);
@@ -148,7 +147,7 @@ public class AntiAddict extends JavaPlugin {
 		getLoadConfiguration().loadGroupsConfig();
 
 		// Check for vault
-		if (getServer().getPluginManager().getPlugin("Vault") == null) {
+		/*if (getServer().getPluginManager().getPlugin("Vault") == null) {
 			getLogger().severe("Could not find Vault! Will shutdown...");
 			getServer().getPluginManager().disablePlugin(this);
 			return;
@@ -163,7 +162,7 @@ public class AntiAddict extends JavaPlugin {
 				getServer().getPluginManager().disablePlugin(this);
 				return;
 			}
-		}
+		}*/
 
 		setupDatabase();
 
