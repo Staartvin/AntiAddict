@@ -96,6 +96,7 @@ public class Config {
 		// Look for defaults in the jar
 		final InputStream defConfigStream = plugin.getResource(fileName);
 		if (defConfigStream != null) {
+			@SuppressWarnings("deprecation")
 			final YamlConfiguration defConfig = YamlConfiguration
 					.loadConfiguration(defConfigStream);
 			config.setDefaults(defConfig);

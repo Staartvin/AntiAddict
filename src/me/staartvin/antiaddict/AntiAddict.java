@@ -11,8 +11,8 @@ import me.staartvin.antiaddict.config.LoadConfiguration;
 import me.staartvin.antiaddict.database.DatabaseConnector;
 import me.staartvin.antiaddict.database.SqLiteDatabase;
 import me.staartvin.antiaddict.listeners.Listeners;
-import me.staartvin.antiaddict.version.Updater;
 import me.staartvin.antiaddict.version.UpdateHandler;
+import me.staartvin.antiaddict.version.Updater;
 
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -108,7 +108,7 @@ public class AntiAddict extends JavaPlugin {
 		mainConfig.reloadConfig();
 		translationConfig.reloadConfig();
 		groupConfig.reloadConfig();
-		
+
 		// Save files
 		mainConfig.saveConfig();
 		translationConfig.saveConfig();
@@ -122,7 +122,9 @@ public class AntiAddict extends JavaPlugin {
 	@Override
 	public void onEnable() {
 
-		getLogger().info("AntiAddict v" + getDescription().getVersion() + " by Staartvin");
+		getLogger().info(
+				"AntiAddict v" + getDescription().getVersion()
+						+ " by Staartvin");
 
 		// Create files
 		translationConfig.createNewFile("Translation config loaded!",
@@ -257,8 +259,9 @@ public class AntiAddict extends JavaPlugin {
 	public void setUseMultiWorldSetup(final boolean useMultiWorldSetup) {
 		UseMultiWorldSetup = useMultiWorldSetup;
 	}
-	
+
 	public Updater getLatestUpdater() {
-		return new Updater(this, 33844, this.getFile(), Updater.UpdateType.NO_DOWNLOAD, false);
+		return new Updater(this, 33844, this.getFile(),
+				Updater.UpdateType.NO_DOWNLOAD, false);
 	}
 }

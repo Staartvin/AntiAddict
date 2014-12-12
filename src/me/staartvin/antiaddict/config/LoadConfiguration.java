@@ -146,7 +146,7 @@ public class LoadConfiguration {
 		plugin.getConfig().addDefault("World.UseMultiWorldSetup", false);
 		plugin.getConfig().addDefault("World.ExemptedWorlds",
 				Arrays.asList("unusedworld"));
-		
+
 		plugin.setLimitall(plugin.getConfig().getBoolean("AntiAddict.LimitAll"));
 		plugin.setUseMultiWorldSetup(plugin.getConfig().getBoolean(
 				"World.UseMultiWorldSetup"));

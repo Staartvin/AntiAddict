@@ -17,29 +17,36 @@ public class UpdateHandler implements Listener {
 	}
 
 	@EventHandler
-	public void onPlayerLogin(PlayerJoinEvent event) {
+	public void onPlayerLogin(final PlayerJoinEvent event) {
 		// Initialise stuff
 		final Player player = event.getPlayer();
-		
-		if (!player.hasPermission("antiaddict.versionnotice")) return;
-		
+
+		if (!player.hasPermission("antiaddict.versionnotice"))
+			return;
+
 		// Checks if Version Update Check is permitted.
-		if (!plugin.getConfig().getBoolean("AntiAddict.NoticeOnVersionUpdate")) return;
-		
+		if (!plugin.getConfig().getBoolean("AntiAddict.NoticeOnVersionUpdate"))
+			return;
+
 		final Updater updater = plugin.getLatestUpdater();
-		
+
 		if (updater.getResult().equals(UpdateResult.UPDATE_AVAILABLE)) {
 			// Schedule it later so it will appear at the bottom
-			plugin.getServer().getScheduler().runTaskLater(plugin, new Runnable() {
+			plugin.getServer().getScheduler()
+					.runTaskLater(plugin, new Runnable() {
 
-				@Override
-				public void run() {
-					// TODO Auto-generated method stub
-					player.sendMessage(ChatColor.GREEN + updater.getLatestName() + ChatColor.GOLD + " is now available for download!");
-					player.sendMessage(ChatColor.GREEN + "Available at: " + ChatColor.GOLD + updater.getLatestFileLink());
-				}
-				
-			}, 10L);
+						@Override
+						public void run() {
+							// TODO Auto-generated method stub
+							player.sendMessage(ChatColor.GREEN
+									+ updater.getLatestName() + ChatColor.GOLD
+									+ " is now available for download!");
+							player.sendMessage(ChatColor.GREEN
+									+ "Available at: " + ChatColor.GOLD
+									+ updater.getLatestFileLink());
+						}
+
+					}, 10L);
 		}
 
 	}
