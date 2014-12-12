@@ -257,6 +257,7 @@ public class Commands implements CommandExecutor {
 		return true;
 	}
 
+	@SuppressWarnings("deprecation")
 	public boolean showInformation(final CommandSender sender, String playerName) {
 
 		final DatabaseConnector dCon = plugin.getdCon();
@@ -268,6 +269,7 @@ public class Commands implements CommandExecutor {
 					+ " is not listed as an addict!");
 			return true;
 		}
+
 		playerName = dCon.getCorrectName(playerName);
 
 		// If the player is online, calculate its playtime.
@@ -282,11 +284,14 @@ public class Commands implements CommandExecutor {
 		sender.sendMessage(ChatColor.GOLD + "--- [AntiAddict] ---");
 		sender.sendMessage(ChatColor.AQUA + "Info about: " + ChatColor.GRAY
 				+ playerName);
-		sender.sendMessage(ChatColor.AQUA
-				+ "Time left: "
-				+ ChatColor.GRAY
-				+ plugin.getMethods().singularOrPlural(
-						dCon.getRestTimeInMinutes(playerName)));
+		if (group != null) {
+			// Do not check time left if player is exempted
+			sender.sendMessage(ChatColor.AQUA
+					+ "Time left: "
+					+ ChatColor.GRAY
+					+ plugin.getMethods().singularOrPlural(
+							dCon.getRestTimeInMinutes(playerName)));
+		}
 		sender.sendMessage(ChatColor.AQUA
 				+ "Total playtime: "
 				+ ChatColor.GRAY
@@ -296,7 +301,7 @@ public class Commands implements CommandExecutor {
 				+ dCon.getReputation(playerName));
 		sender.sendMessage(ChatColor.AQUA + "Language: " + ChatColor.GRAY
 				+ dCon.getLanguage(playerName));
-		if (!group.equalsIgnoreCase("")) {
+		if (group != null && !group.equalsIgnoreCase("")) {
 			sender.sendMessage(ChatColor.AQUA + "Group: " + ChatColor.GRAY
 					+ group);
 		}
