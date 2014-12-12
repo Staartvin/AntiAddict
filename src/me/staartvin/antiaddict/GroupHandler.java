@@ -55,6 +55,11 @@ public class GroupHandler {
 	}
 
 	public boolean isInAGroup(final Player player) {
+		// OP's don't have any restricted time
+		if (player.isOp()) {
+			return false;
+		}
+		
 		for (final String group : getGroups()) {
 			if (player.hasPermission("antiaddict.groups." + group)) {
 				return true;
